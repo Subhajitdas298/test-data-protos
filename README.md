@@ -1,6 +1,6 @@
 # test-data-protos
 
-A Go project containing Google Protocol Buffer (protobuf) definitions.
+A Java project containing Google Protocol Buffer (protobuf) definitions.
 
 ## Structure
 
@@ -22,8 +22,13 @@ See [`proto/data.proto`](proto/data.proto).
 | `DataEntry` | `date` | `Date`                |
 | `Date`      | `a`    | `repeated string`     |
 
-## Generate Go code
+## Build
+
+Requires Java 11+ and Maven 3.6+.
 
 ```bash
-protoc --go_out=. --go_opt=paths=source_relative proto/data.proto
+mvn generate-sources   # compile .proto → Java sources
+mvn package            # build the jar
 ```
+
+Generated Java classes are placed under `target/generated-sources/protobuf`.

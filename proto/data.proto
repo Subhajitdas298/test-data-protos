@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package testdata;
 
-option go_package = "github.com/Subhajitdas298/test-data-protos/proto;testdata";
+option java_package = "com.github.subhajitdas298.testdataprotos";
+option java_outer_classname = "DataProtos";
+option java_multiple_files = true;
 
 // Root holds the top-level data list.
 message Root {
