@@ -11,13 +11,13 @@ message Root {
   repeated DataEntry data = 1;
 }
 
-// DataEntry holds multiple date entries.
+// DataEntry holds multiple date records.
 message DataEntry {
-  repeated Date dates = 1;
+  repeated DateRecord dates = 1;
 }
 
-// Date contains 26 repeated-string fields, one for each letter a–z.
-message Date {
+// DateRecord contains 26 repeated-string fields, one for each letter a–z.
+message DateRecord {
   repeated string a = 1;
   repeated string b = 2;
   repeated string c = 3;

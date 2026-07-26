@@ -41,7 +41,7 @@ npm install @subhajitdas298/test-data-protos
 ```
 
 ```typescript
-import { Root, DataEntry, Date } from "@subhajitdas298/test-data-protos";
+import { Root, DataEntry, DateRecord } from "@subhajitdas298/test-data-protos";
 ```
 
 ## CI / Publishing
