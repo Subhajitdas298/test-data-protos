@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package testdata;
+
+option go_package = "github.com/Subhajitdas298/test-data-protos/proto;testdata";
+
+// Root holds the top-level data list.
+message Root {
+  repeated DataEntry data = 1;
+}
+
+// DataEntry wraps a single date object inside the data list.
+message DataEntry {
+  Date date = 1;
+}
+
+// Date contains a repeated string field 'a'.
+message Date {
+  repeated string a = 1;
+}
