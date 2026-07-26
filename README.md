@@ -22,13 +22,15 @@ See [`proto/data.proto`](proto/data.proto).
 | `DataEntry` | `date` | `Date`                |
 | `Date`      | `a`    | `repeated string`     |
 
+## Requirements
+
+- Java 21 (latest LTS)
+
 ## Build
 
-Requires Java 11+ and Maven 3.6+.
-
 ```bash
-mvn generate-sources   # compile .proto → Java sources
-mvn package            # build the jar
+./gradlew build           # compile .proto → Java and build the jar
+./gradlew generateProto   # generate Java sources from .proto only
 ```
 
-Generated Java classes are placed under `target/generated-sources/protobuf`.
+Generated Java classes are placed under `build/generated/source/proto/main/java`.
