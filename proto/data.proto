@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package testdata;
+
+option java_package = "com.github.subhajitdas298.testdataprotos";
+option java_outer_classname = "DataProtos";
+option java_multiple_files = true;
+
+// Root holds the top-level data list.
+message Root {
+  repeated DataEntry data = 1;
+}
+
+// DataEntry holds multiple date records.
+message DataEntry {
+  repeated DateRecord dates = 1;
+}
+
+// DateRecord contains 26 repeated-string fields, one for each letter a–z.
+message DateRecord {
+  repeated string a = 1;
+  repeated string b = 2;
+  repeated string c = 3;
+  repeated string d = 4;
+  repeated string e = 5;
+  repeated string f = 6;
+  repeated string g = 7;
+  repeated string h = 8;
+  repeated string i = 9;
+  repeated string j = 10;
+  repeated string k = 11;
+  repeated string l = 12;
+  repeated string m = 13;
+  repeated string n = 14;
+  repeated string o = 15;
+  repeated string p = 16;
+  repeated string q = 17;
+  repeated string r = 18;
+  repeated string s = 19;
+  repeated string t = 20;
+  repeated string u = 21;
+  repeated string v = 22;
+  repeated string w = 23;
+  repeated string x = 24;
+  repeated string y = 25;
+  repeated string z = 26;
+}
