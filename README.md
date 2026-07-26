@@ -1,36 +1,74 @@
 # test-data-protos
 
-A Java project containing Google Protocol Buffer (protobuf) definitions.
+Protobuf definitions for test data, published as both a **Java** package (GitHub Packages Maven) and an **npm** package (GitHub Packages npm registry, TypeScript-ready).
 
-## Structure
+## Proto structure
 
 ```
-data: [          ← repeated DataEntry
-  date: {        ← Date message
-    a: [...]     ← repeated string
-  }
-]
+Root
+└── data[]          ← repeated DataEntry
+    └── dates[]     ← repeated Date (multiple dates per entry)
+        ├── a[]     ← repeated string
+        ├── b[]     ← repeated string
+        │   ...
+        └── z[]     ← repeated string  (26 fields total, a–z)
 ```
 
-### Proto definition
+See [`proto/data.proto`](proto/data.proto) for the full definition.
 
-See [`proto/data.proto`](proto/data.proto).
+## Packages
 
-| Message     | Field  | Type                  |
-|-------------|--------|-----------------------|
-| `Root`      | `data` | `repeated DataEntry`  |
-| `DataEntry` | `date` | `Date`                |
-| `Date`      | `a`    | `repeated string`     |
+### Java (GitHub Packages Maven)
 
-## Requirements
+```xml
+<!-- Maven -->
+<dependency>
+  <groupId>com.github.subhajitdas298</groupId>
+  <artifactId>test-data-protos</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
-- Java 21 (latest LTS)
+```kotlin
+// Gradle (Kotlin DSL)
+implementation("com.github.subhajitdas298:test-data-protos:1.0.0")
+```
 
-## Build
+### TypeScript / npm (GitHub Packages npm)
 
 ```bash
-./gradlew build           # compile .proto → Java and build the jar
-./gradlew generateProto   # generate Java sources from .proto only
+npm install @subhajitdas298/test-data-protos
 ```
 
-Generated Java classes are placed under `build/generated/source/proto/main/java`.
+```typescript
+import { Root, DataEntry, Date } from "@subhajitdas298/test-data-protos";
+```
+
+## CI / Publishing
+
+Both packages are published automatically via GitHub Actions on every push to `main` or on a GitHub Release.
+
+| Workflow | File |
+|---|---|
+| Publish Java | [`.github/workflows/publish-java.yml`](.github/workflows/publish-java.yml) |
+| Publish npm  | [`.github/workflows/publish-npm.yml`](.github/workflows/publish-npm.yml) |
+
+## Local development
+
+### Java
+
+Requires Java 21.
+
+```bash
+./gradlew build
+```
+
+### TypeScript codegen
+
+Requires [buf](https://buf.build/docs/installation) and Node 22.
+
+```bash
+npm install          # installs protoc-gen-es and typescript
+npm run generate     # generates src/data_pb.ts from proto/data.proto via buf
+npm run build        # compiles TypeScript → dist/
+```

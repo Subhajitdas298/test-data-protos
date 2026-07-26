@@ -1,0 +1,14 @@
+# Gradle
+.gradle/
+build/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Generated proto output
+src/
+dist/
+
+# buf
+buf.lock
