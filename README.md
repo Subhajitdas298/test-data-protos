@@ -25,13 +25,13 @@ See [`proto/data.proto`](proto/data.proto) for the full definition.
 <dependency>
   <groupId>com.github.subhajitdas298</groupId>
   <artifactId>test-data-protos</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
 ```kotlin
 // Gradle (Kotlin DSL)
-implementation("com.github.subhajitdas298:test-data-protos:1.0.0")
+implementation("com.github.subhajitdas298:test-data-protos:1.0.1")
 ```
 
 ### TypeScript / npm (GitHub Packages npm)

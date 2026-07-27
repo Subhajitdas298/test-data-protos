@@ -1,6 +1,6 @@
 {
   "name": "@subhajitdas298/test-data-protos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript protobuf definitions for test-data-protos",
   "main": "dist/data_pb.js",
   "types": "dist/data_pb.d.ts",

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.subhajitdas298"
-version = System.getenv("PUBLISH_VERSION") ?: "1.0.0"
+version = System.getenv("PUBLISH_VERSION") ?: "1.0.1"
 
 java {
     toolchain {
