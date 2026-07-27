@@ -16,32 +16,32 @@ message DataEntry {
   repeated DateRecord dates = 1;
 }
 
-// DateRecord contains 26 repeated-string fields, one for each letter a–z.
+// DateRecord contains 26 repeated-double fields, one for each letter a–z.
 message DateRecord {
-  repeated string a = 1;
-  repeated string b = 2;
-  repeated string c = 3;
-  repeated string d = 4;
-  repeated string e = 5;
-  repeated string f = 6;
-  repeated string g = 7;
-  repeated string h = 8;
-  repeated string i = 9;
-  repeated string j = 10;
-  repeated string k = 11;
-  repeated string l = 12;
-  repeated string m = 13;
-  repeated string n = 14;
-  repeated string o = 15;
-  repeated string p = 16;
-  repeated string q = 17;
-  repeated string r = 18;
-  repeated string s = 19;
-  repeated string t = 20;
-  repeated string u = 21;
-  repeated string v = 22;
-  repeated string w = 23;
-  repeated string x = 24;
-  repeated string y = 25;
-  repeated string z = 26;
+  repeated double a = 1;
+  repeated double b = 2;
+  repeated double c = 3;
+  repeated double d = 4;
+  repeated double e = 5;
+  repeated double f = 6;
+  repeated double g = 7;
+  repeated double h = 8;
+  repeated double i = 9;
+  repeated double j = 10;
+  repeated double k = 11;
+  repeated double l = 12;
+  repeated double m = 13;
+  repeated double n = 14;
+  repeated double o = 15;
+  repeated double p = 16;
+  repeated double q = 17;
+  repeated double r = 18;
+  repeated double s = 19;
+  repeated double t = 20;
+  repeated double u = 21;
+  repeated double v = 22;
+  repeated double w = 23;
+  repeated double x = 24;
+  repeated double y = 25;
+  repeated double z = 26;
 }
