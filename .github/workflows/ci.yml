@@ -1,15 +1,39 @@
-name: Publish npm Package
+name: CI
 
 on:
-  release:
-    types: [published]
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-  publish:
+  java:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 24
+        uses: actions/setup-java@v4
+        with:
+          java-version: '24'
+          distribution: 'temurin'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build
+        run: ./gradlew build
+
+  npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -18,8 +42,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@subhajitdas298'
 
       - name: Set up buf
         uses: bufbuild/buf-setup-action@v1
@@ -32,15 +54,5 @@ jobs:
       - name: Generate TypeScript from proto
         run: npm run generate
 
-      - name: Set version from release tag
-        run: |
-          TAG="${{ github.event.release.tag_name }}"
-          npm pkg set version="${TAG#v}"
-
       - name: Build
         run: npm run build
-
-      - name: Publish to GitHub Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

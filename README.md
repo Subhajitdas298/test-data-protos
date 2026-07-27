@@ -7,11 +7,11 @@ Protobuf definitions for test data, published as both a **Java** package (GitHub
 ```
 Root
 └── data[]          ← repeated DataEntry
-    └── dates[]     ← repeated Date (multiple dates per entry)
-        ├── a[]     ← repeated string
-        ├── b[]     ← repeated string
+    └── dates[]     ← repeated DateRecord (multiple dates per entry)
+        ├── a[]     ← repeated double
+        ├── b[]     ← repeated double
         │   ...
-        └── z[]     ← repeated string  (26 fields total, a–z)
+        └── z[]     ← repeated double  (26 fields total, a–z)
 ```
 
 See [`proto/data.proto`](proto/data.proto) for the full definition.
@@ -46,10 +46,11 @@ import { Root, DataEntry, DateRecord } from "@subhajitdas298/test-data-protos";
 
 ## CI / Publishing
 
-Both packages are published automatically via GitHub Actions on every push to `main` or on a GitHub Release.
+Every pull request and push to `main` runs a build-only CI check (no publishing). Both packages are published automatically only when a GitHub Release is published, using the release tag (e.g. `v1.2.3` → `1.2.3`) as the package version.
 
 | Workflow | File |
 |---|---|
+| CI (build check) | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
 | Publish Java | [`.github/workflows/publish-java.yml`](.github/workflows/publish-java.yml) |
 | Publish npm  | [`.github/workflows/publish-npm.yml`](.github/workflows/publish-npm.yml) |
 
@@ -57,7 +58,7 @@ Both packages are published automatically via GitHub Actions on every push to `m
 
 ### Java
 
-Requires Java 21.
+Requires Java 24.
 
 ```bash
 ./gradlew build

@@ -1,9 +1,6 @@
 name: Publish Java Package
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [published]
 
@@ -29,8 +26,15 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Determine version from release tag
+        id: version
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
       - name: Build and publish to GitHub Packages
         run: ./gradlew publish
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_VERSION: ${{ steps.version.outputs.version }}
